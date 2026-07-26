@@ -1,0 +1,42 @@
+# Node & Dependencies
+node_modules/
+
+# Build & Output Directories
+dist/
+build/
+coverage/
+
+# Security & Environment files (EXCLUDED)
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.crt
+*.pfx
+id_rsa
+id_dsa
+service-account.json
+service-account*.json
+firebase-admin.json
+credentials.json
+client_secret.json
+secrets.*
+config/secrets.*
+terraform.tfvars
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Python & IDE files
+__pycache__/
+*.pyc
+.vscode/settings.json
+.idea/
+
+# Logs & Temporary files
+*.log
+.DS_Store
+Thumbs.db

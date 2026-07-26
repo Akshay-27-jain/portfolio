@@ -1,0 +1,6 @@
+{
+  "name": "Akshay Jain Portfolio",
+  "description": "Futuristic 3D interactive portfolio for Akshay Jain, AI Engineer & Full Stack Developer featuring interactive 3D visuals, AI assistant, project architecture, interactive terminal, and skill galaxy.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
