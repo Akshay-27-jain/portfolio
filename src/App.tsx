@@ -14,20 +14,16 @@ import { AboutSection } from './components/sections/AboutSection';
 import { EducationSection } from './components/sections/EducationSection';
 import { SkillsSection } from './components/sections/SkillsSection';
 import { ProjectsSection } from './components/sections/ProjectsSection';
-import { InteractiveSnippetWindow } from './components/ui/InteractiveSnippetWindow';
-import { InteractiveTerminal } from './components/ui/InteractiveTerminal';
 import { ExperienceSection } from './components/sections/ExperienceSection';
 import { AchievementsSection } from './components/sections/AchievementsSection';
 import { CertificationsSection } from './components/sections/CertificationsSection';
 import { CodingProfilesSection } from './components/sections/CodingProfilesSection';
 import { BlogSection } from './components/sections/BlogSection';
-import { TestimonialsSection } from './components/sections/TestimonialsSection';
 import { GlobeSection } from './components/sections/GlobeSection';
 import { ContactSection } from './components/sections/ContactSection';
 import { Footer } from './components/sections/Footer';
 
 import { Project } from './types';
-import { Cpu, Terminal, Layers } from 'lucide-react';
 
 export function AppContent() {
   const [isLoading, setIsLoading] = useState(true);
@@ -77,27 +73,6 @@ export function AppContent() {
         onSelectArchitecture={(proj) => setSelectedArchitectureProject(proj)}
       />
 
-      {/* Interactive Code Snippets Runner */}
-      <section id="architecture" className="py-20 px-4 lg:px-8 relative z-10 max-w-7xl mx-auto space-y-16">
-        <div className="text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono uppercase tracking-widest mb-4">
-            <Cpu className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Developer Sandbox</span>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
-            Live Code Runner & <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500">
-              Interactive Terminal CLI
-            </span>
-          </h2>
-        </div>
-
-        <InteractiveSnippetWindow />
-
-        <div className="pt-8">
-          <InteractiveTerminal />
-        </div>
-      </section>
 
       {/* Experience Section */}
       <ExperienceSection />
@@ -116,9 +91,6 @@ export function AppContent() {
 
       {/* Technical Articles Blog */}
       <BlogSection />
-
-      {/* Peer Testimonials */}
-      <TestimonialsSection />
 
       {/* Contact Section */}
       <ContactSection />

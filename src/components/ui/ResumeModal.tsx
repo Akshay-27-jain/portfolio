@@ -47,71 +47,59 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
 
   if (!isOpen) return null;
 
-  const plainTextResume = `===================================================================
-AKSHAY JAIN - SOFTWARE ENGINEER & AI DEVELOPER
-Email: ${PERSONAL_INFO.email} | Location: ${PERSONAL_INFO.location}
-Current CGPA: 9.07 / 10.0 | College: ${PERSONAL_INFO.college}
-GitHub: https://github.com/akshayjain | LinkedIn: https://linkedin.com/in/akshayjain
-===================================================================
+  const plainTextResume = `AKSHAY JAIN
+JAVA FULL STACK DEVELOPER | SOFTWARE ENGINEER
+Solapur, Maharashtra, India  |  +91 8618280477  |  jainakshay0804@gmail.com
+Portfolio: portfolio-ten-murex-ot303crdie.vercel.app  |  GitHub: github.com/Akshay-27-jain  |  LinkedIn: linkedin.com/in/akshayjain
 
-SUMMARY
--------------------------------------------------------------------
-Full Stack & AI Developer currently pursuing B.Tech at Walchand Institute of Technology with an outstanding academic standing of 9.07 / 10.0 CGPA. Combines deep technical expertise in Java, Spring Boot, React, Python, PostgreSQL, and Machine Learning with exceptional communication, problem-solving, time management, and cross-functional team leadership skills. Proven track record of engineering production-ready applications, edge AI vision systems, and AI microservices.
-
-EDUCATION
--------------------------------------------------------------------
-Degree: ${EDUCATION.degree}
-Institution: ${EDUCATION.institution}, ${EDUCATION.location}
-Current CGPA: 9.07 / 10.0
-Status: ${EDUCATION.status} (${EDUCATION.period})
-Core Subjects: Data Structures & Algorithms, AI/ML, DBMS, Operating Systems, Web Technologies, Software Engineering, Java Architecture.
+PROFESSIONAL SUMMARY
+Software Engineering undergraduate specializing in Java full-stack development, with hands-on experience building REST APIs and full-stack applications using Java, Spring Boot, Spring Security, React, Next.js, and PostgreSQL. Skilled in implementing JWT-based authentication, relational database design, and CRUD-driven backend systems, with additional exposure to Python, JavaScript, MySQL, MongoDB, and LLM-based service integration. Strong foundation in Data Structures & Algorithms and object-oriented programming, with proven ability to design scalable, well-tested software and communicate technical decisions clearly to cross-functional teams.
 
 TECHNICAL SKILLS
--------------------------------------------------------------------
-- Programming Languages: Java, Python, JavaScript (ES6+), SQL
-- Frameworks & Backend: Spring Boot, Spring MVC, Servlets, JSP, Node.js, Express, REST APIs
-- Frontend Development: React, Tailwind CSS, Motion, Responsive UI Design
-- AI & Machine Learning: Scikit-Learn, XGBoost, OpenCV, YOLO, TensorFlow Lite, Gemini API
-- Databases & Cloud Tools: PostgreSQL, MySQL, MongoDB, Docker, Git, GitHub, Postman, Google AI Studio
-
-SOFT & PROFESSIONAL SKILLS
--------------------------------------------------------------------
-- Effective Communication: Technical documentation, stakeholder presentations, active listening, clear architectural explanations
-- Problem-Solving & DSA: Algorithmic thinking (350+ DSA problems solved), root cause analysis, analytical reasoning
-- Leadership & Collaboration: Cross-functional team leadership, peer mentoring, hackathon project coordination
-- Time Management & Agile: Sprint planning, milestone tracking, priority management, rapid iterative delivery under deadlines
+Languages: Java, Python, JavaScript, SQL
+Backend & APIs: Spring Boot, Spring Security, Spring Data JPA, REST APIs, Node.js, JWT Authentication
+Frontend: React, Next.js
+Databases: PostgreSQL, MySQL, MongoDB, Prisma ORM
+AI & Machine Learning: LLM APIs, Scikit-Learn, OpenCV
+Tools & Platforms: Git, GitHub, Docker, Postman, Clerk, Resend
+Soft Skills: Problem Solving, Communication, Teamwork, Adaptability
 
 FEATURED PROJECTS
--------------------------------------------------------------------
-1. AI Warehouse Optimization System (React, Python, Flask, XGBoost, PostgreSQL)
-   - Built demand forecasting platform using XGBoost achieving 93.4% prediction accuracy.
-   - Reduced excess holding inventory by 28% through multi-warehouse inventory transfer algorithms.
-   - Communicated architectural design to stakeholders and led cross-functional project execution.
+Subscription Tracker — Subscription & Renewal Management Platform
+Tech Stack: Next.js, React, PostgreSQL, Prisma, Clerk, Resend, Recharts
+GitHub: github.com/Akshay-27-jain/Subscription-Tracker
+• Engineered a full-stack subscription management platform using Next.js, React, and PostgreSQL to track recurring services, billing cycles, and renewal dates.
+• Implemented Clerk-based authentication, CRUD operations, and automated Resend email reminders for upcoming renewals, with database access optimized through Prisma ORM.
+• Built interactive Recharts-based analytics dashboards to visualize monthly spending, active subscriptions, and expense trends, backed by a responsive UI with reusable React components.
 
-2. AI SaaS Customer Support Platform (React, Node.js, Express, PostgreSQL, Gemini API)
-   - Developed multi-tenant SaaS application with JWT security and sentiment-based ticket routing.
-   - Reduced average query turnaround time from 4 hours to 18 minutes.
+Hospital Management System
+Tech Stack: Java, Spring Boot, React, PostgreSQL, REST APIs
+GitHub: github.com/Akshay-27-jain/Hospital-Management-System
+• Architected a full-stack hospital management system using Java, Spring Boot, React, and PostgreSQL to manage patients, doctors, appointments, and medical records.
+• Engineered RESTful APIs and role-based workflows for administrators, doctors, and staff, with relational database schemas designed for patient records, appointments, and billing-related data.
+• Built responsive React dashboards to streamline appointment scheduling, patient management, and administrative operations.
 
-3. Edge-Optimized Computer Vision Monitor (Python, YOLO, TensorFlow Lite, WebSockets)
-   - Quantized YOLO detection engine for low-power edge hardware, achieving 30+ FPS and 94% bandwidth reduction.
+Web Application Health, Response Latency & SSL Certificate Expiry Monitoring System
+Tech Stack: Java 21, Spring Boot 3.4, Spring Security, JWT, Spring Data JPA, H2 Database, Java Mail, Webhooks
+GitHub: github.com/Akshay-27-jain/Web-Application-Health-Response-Latency-SSL-Certificate-Expiry-Monitoring-System
+• Engineered a full-stack observability platform using Java 21 and Spring Boot 3.4, performing real-time HTTP/HTTPS health checks and raw TCP port probes (Redis, Postgres, DNS), with a multi-channel alert dispatcher integrating Slack, Discord, custom HTTP POST webhooks, and Java Mail-based HTML notifications for downtime.
+• Persisted time-series metrics via Spring Data JPA and an embedded H2 database to compute latency analytics (Min/Avg/Max) and render dynamic SVG trend charts.
+• Secured REST API endpoints with Spring Security, JWT authentication, and BCrypt password hashing, enforcing RBAC and SSRF-defensive URL validation, and designed a responsive dark-themed dashboard with live tag filtering, instant domain analyzer scans, and automated public status pages.
 
-4. Hospital Management System (Java, JDBC, MySQL)
-   - Engineered thread-safe Java enterprise desktop application managing patient records, shift scheduling, and itemized billing with zero SQL injection vulnerabilities.
+EXPERIENCE
+Virtual Intern — Java Full Stack Development  |  Infosys Springboard	August 2026 – Present (Ongoing)
+• Completing hands-on assignments in Java full-stack development, strengthening backend architecture, enterprise application design, and practical software engineering skills.
 
-PRACTICAL EXPERIENCE & LEADERSHIP
--------------------------------------------------------------------
-Full Stack & AI Developer (Academic & Independent Projects)
-Period: 2023 - Present | Location: Walchand Institute of Technology
-- Designed, architected, and engineered end-to-end full stack web platforms, Java enterprise backends, and AI predictive engines.
-- Utilized Agile principles for sprint delivery and AI-assisted development tools (Google AI Studio, Copilot) to accelerate delivery.
-- Active participant in campus tech forums and developer hackathons, presenting technical solutions to peer groups and mentors.
+EDUCATION
+Bachelor of Technology (B.Tech) in Computer Engineering
+Walchand Institute of Technology, Solapur, Maharashtra, India
+CGPA: 9.07 / 10.0  |  2023 – Present (Undergraduate, Pursuing)
 
-HONORS, ACHIEVEMENTS & CERTIFICATIONS
--------------------------------------------------------------------
-- Certified: AI-assisted Coding Workshop — Nasscom AI Code Sarathi (Nasscom AI, Mar & Apr 2026).
-- Maintained top academic standing with a CGPA of 9.07 / 10.0 at Walchand Institute of Technology.
-- Solved 350+ DSA algorithmic problems across LeetCode and HackerRank (5★ Java badge).
-- Certified in Full Stack Web Development & Enterprise Java Spring Boot.
+ACHIEVEMENTS & CERTIFICATIONS
+HackerRank Java (Basic) Certification  |  HackerRank	Aug 2026
+• Earned Certificate of Accomplishment for passing HackerRank's Java (Basic) skill certification test, validating core Java programming fundamentals.
+Citi Technology Software Development Job Simulation  |  Forage	Aug 2026
+• Completed practical tasks including creating a state diagram, writing a feature proposal, querying data from the web, and visualizing live data.
 `;
 
   const handleCopyText = () => {
@@ -389,26 +377,15 @@ HONORS, ACHIEVEMENTS & CERTIFICATIONS
               new Paragraph({
                 bullet: { level: 0 },
                 children: [
-                  new TextRun({ text: 'Nasscom AI Code Sarathi: ', bold: true, size: 20 }),
-                  new TextRun({ text: 'Completed AI-assisted Coding Workshop & demonstrated competence through mandatory coursework (Nasscom AI, Mar & Apr 2026).', size: 20 }),
+                  new TextRun({ text: 'HackerRank Java (Basic) Certification | HackerRank (Aug 2026): ', bold: true, size: 20 }),
+                  new TextRun({ text: 'Earned Certificate of Accomplishment for passing HackerRank\'s Java (Basic) skill certification test, validating core Java programming fundamentals (ID: FFC4C4FA08EA).', size: 20 }),
                 ],
               }),
               new Paragraph({
                 bullet: { level: 0 },
                 children: [
-                  new TextRun({ text: 'Maintained top academic standing with a CGPA of 9.07 / 10.0 at Walchand Institute of Technology.', size: 20 }),
-                ],
-              }),
-              new Paragraph({
-                bullet: { level: 0 },
-                children: [
-                  new TextRun({ text: 'Solved 350+ DSA algorithmic problems across LeetCode and HackerRank (5★ Java badge).', size: 20 }),
-                ],
-              }),
-              new Paragraph({
-                bullet: { level: 0 },
-                children: [
-                  new TextRun({ text: 'Certified in Full Stack Web Development & Enterprise Java Spring Boot.', size: 20 }),
+                  new TextRun({ text: 'Citi Technology Software Development Job Simulation | Forage (Aug 2026): ', bold: true, size: 20 }),
+                  new TextRun({ text: 'Completed practical tasks including creating a state diagram, writing a feature proposal, querying data from the web, and visualizing live data (ID: 6a79fcd821f7d70710259b64).', size: 20 }),
                 ],
               }),
             ],
@@ -845,10 +822,8 @@ HONORS, ACHIEVEMENTS & CERTIFICATIONS
 
                 <div>
                   <h2 className="font-bold uppercase border-b border-black pb-1 mb-2 text-sm">Achievements & Certifications</h2>
-                  <p className="text-[11px]">• <strong>Nasscom AI Code Sarathi:</strong> AI-assisted Coding Workshop & Mandatory Coursework Competence (Nasscom AI, Mar & Apr 2026).</p>
-                  <p className="text-[11px]">• Maintained CGPA of 9.07 / 10.0 throughout B.Tech degree at Walchand Institute of Technology.</p>
-                  <p className="text-[11px]">• Solved 350+ algorithmic DSA problems on LeetCode and HackerRank.</p>
-                  <p className="text-[11px]">• Certified in Full Stack Web Development & Enterprise Java Spring Boot.</p>
+                  <p className="text-[11px]">• <strong>HackerRank Java (Basic) Certification | HackerRank (Aug 2026):</strong> Earned Certificate of Accomplishment for passing HackerRank's Java (Basic) skill certification test, validating core Java programming fundamentals.</p>
+                  <p className="text-[11px]">• <strong>Citi Technology Software Development Job Simulation | Forage (Aug 2026):</strong> Completed practical tasks including creating a state diagram, writing a feature proposal, querying data from the web, and visualizing live data.</p>
                 </div>
               </div>
             )}

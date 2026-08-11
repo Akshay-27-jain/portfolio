@@ -87,36 +87,6 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       },
     },
     {
-      id: 'architecture',
-      title: 'Explore System Architecture Diagrams',
-      category: 'Deep Dive',
-      icon: <Cpu className="w-4 h-4 text-blue-400" />,
-      action: () => {
-        onClose();
-        window.location.hash = '#architecture';
-      },
-    },
-    {
-      id: 'code-snippets',
-      title: 'Run Live Interactive Code Snippets',
-      category: 'Interactive',
-      icon: <Code className="w-4 h-4 text-emerald-400" />,
-      action: () => {
-        onClose();
-        window.location.hash = '#code-snippets';
-      },
-    },
-    {
-      id: 'terminal',
-      title: 'Open Interactive CLI Terminal',
-      category: 'Interactive',
-      icon: <Terminal className="w-4 h-4 text-amber-400" />,
-      action: () => {
-        onClose();
-        window.location.hash = '#terminal';
-      },
-    },
-    {
       id: 'education',
       title: 'View B.Tech Education at Walchand Institute',
       category: 'Navigation',

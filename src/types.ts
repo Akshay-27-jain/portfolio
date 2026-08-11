@@ -96,16 +96,6 @@ export interface Testimonial {
   rating: number;
 }
 
-export interface CodeSnippet {
-  id: string;
-  title: string;
-  language: 'java' | 'python' | 'typescript' | 'sql';
-  filename: string;
-  description: string;
-  code: string;
-  simulatedOutput: string;
-}
-
 export interface ChatMessage {
   id: string;
   sender: 'user' | 'ai';

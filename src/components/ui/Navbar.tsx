@@ -34,9 +34,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     { name: 'Education', href: '#education' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Architecture', href: '#architecture' },
-    { name: 'Code Live', href: '#code-snippets' },
     { name: 'Experience', href: '#experience' },
+    { name: 'Certifications', href: '#certifications' },
     { name: 'Contact', href: '#contact' },
   ];
 

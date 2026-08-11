@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express";
 import path from "path";
 import { GoogleGenAI } from "@google/genai";
@@ -20,48 +21,42 @@ Biography:
 - Name: Akshay Jain
 - Title: AI Engineer | Full Stack Developer | Java Developer
 - Location: Solapur, Maharashtra, India
+- Phone: +91 8618280477
 - Email: jainakshay0804@gmail.com
+- Portfolio: https://portfolio-ten-murex-ot303crdie.vercel.app
+- GitHub: https://github.com/Akshay-27-jain
+- LinkedIn: https://www.linkedin.com/in/akshay-jain-636499327/
 - College: Walchand Institute of Technology, Solapur
-- Degree: B.Tech in Computer Engineering (Pursuing)
+- Degree: B.Tech in Computer Engineering (Pursuing, 2023 - Present)
 - CGPA: 9.07 / 10.0
-- Problem Solving: Solved 350+ DSA Problems across LeetCode, HackerRank (5★ Java badge), and CodeChef.
 
 Technical Skills:
-- Programming Languages: Java, Python, JavaScript (ES6+), SQL, HTML5, CSS3
-- Frontend: React.js, Tailwind CSS, Bootstrap, Vite, Gradio
-- Backend: Spring Boot, Spring Framework, Servlet, JSP, Node.js, Express.js, Flask
-- Databases: PostgreSQL, MongoDB, MySQL
-- AI & Machine Learning: Scikit-Learn, XGBoost, OpenCV, YOLOv8, TensorFlow Lite, Pandas, NumPy, Q-Learning
-- APIs & Cloud: REST APIs, JWT, Gemini API, Docker, Render, Railway, Vercel, Postman
-- Tools & DevOps: Git, GitHub, VS Code, IntelliJ IDEA, Google AI Studio, Figma
-
-Experience:
-1. Infosys Springboard | Virtual Intern – Java Full Stack Development (Early 2026 – Present)
-   - Completed assignments focusing on Java full-stack technologies, backend architecture, and enterprise web component development using modern Java frameworks.
-2. Walchand Institute of Technology | AI & Full Stack Developer (Academic) (2023 – Present)
-   - Engineered production-style AI and full-stack applications using Java, Python, React, and Flask.
-   - Designed scalable RESTful APIs with Spring Boot, Flask, and Express.js, integrating PostgreSQL and MongoDB.
-   - Spearheaded end-to-end software design, testing, and deployment using Agile methodologies and Git.
+- Languages: Java, Python, JavaScript, SQL
+- Web Development: React, Next.js, FastAPI, Spring Boot, Node.js, REST APIs
+- Databases: PostgreSQL, MySQL, MongoDB
+- AI & Machine Learning: LLM APIs, Scikit-Learn, OpenCV
+- Tools: Git, GitHub, Docker, Postman
+- Soft Skills: Problem Solving, Communication, Teamwork, Adaptability
 
 Featured Projects:
-1. AI Smart Exam Surveillance System (Python, Computer Vision, OpenCV):
-   - AI-based proctoring system using computer vision to monitor exam environments and detect suspicious behavior in real-time.
-2. AI Warehouse Optimization System (React, Flask, PostgreSQL, Scikit-Learn, XGBoost, Docker):
-   - Warehouse management platform for demand forecasting, inventory allocation, and dead stock identification. Achieved 93.4% accuracy and reduced excess stock by 28%.
-3. AI SaaS Customer Support Platform (React, Node.js, Express.js, PostgreSQL, Gemini API):
-   - Multi-tenant SaaS platform with AI chatbot, ticket routing, and sentiment analysis. Automated 62% of queries and reduced response time from 4h to 18m.
-4. Resource Allocation Simulator (Python, Q-Learning, Gradio):
-   - Reinforcement learning simulation model for automated university class timetable generation with an interactive Gradio interface.
-5. Edge-Optimized Computer Vision Monitor (Python, OpenCV, YOLOv8, TensorFlow Lite, React):
-   - Edge AI system for real-time surveillance, occupancy analytics, and event detection with sub-50ms latency and 94% cloud bandwidth reduction.
-6. Arise Edu (Full Stack Platform) (React, Node.js, Express.js, PostgreSQL, Tailwind CSS):
-   - Digital learning platform with JWT auth, student progress dashboards, course management, and quiz portals.
+1. Subscription Tracker — Subscription & Renewal Management Platform:
+   - Tech Stack: Next.js, React, PostgreSQL, Prisma, Clerk, Resend, Recharts
+   - Full-stack platform tracking recurring services, renewal dates, and expenses with automated Resend email reminders & Recharts spending analytics.
+2. Hospital Management System:
+   - Tech Stack: Java, Spring Boot, React, PostgreSQL, REST APIs
+   - Enterprise hospital operations platform managing patients, doctors, appointments, medical records, and role-based workflows with Spring Boot APIs.
+3. ChronosPulse — Synthetic Health & SSL Certificate Observability SaaS:
+   - Tech Stack: Java 21, Spring Boot 3.4, Spring Security (JWT), Spring Data JPA, Java Mail, H2 Database
+   - Real-time observability platform tracking website availability, response latency, and SSL expiration dates with Slack/Discord webhooks & SSRF protection.
 
-Certifications & Achievements:
-- Nasscom AI Code Sarathi: AI-assisted Coding Workshop & Mandatory Coursework Competence (Nasscom AI, Mar & Apr 2026).
-- Certifications: NPTEL Edge Computing, Full Stack Web Development, Enterprise Java & Spring Boot, Machine Learning Fundamentals, SQL & PostgreSQL, REST API Development.
-- Problem Solving: Solved 350+ Data Structures & Algorithms problems across LeetCode, HackerRank, and CodeChef.
-- Development: Successfully built and deployed 5+ Full Stack Applications and multiple AI/ML software solutions.
+Experience:
+- Infosys Springboard | Virtual Intern — Java Full Stack Development (August 2026 – Present Ongoing)
+  - Completing assignments focused on Java full-stack technologies, backend architecture, and enterprise web application development.
+
+Education & Certifications:
+- B.Tech in Computer Engineering at Walchand Institute of Technology (CGPA: 9.07 / 10.0)
+- Nasscom AI Code Sarathi | Nasscom AI (Mar – Apr 2026)
+- Citi Technology Software Development Job Simulation | Forage (Aug 2026)
 
 Keep your answers concise, engaging, helpful, and formatted neatly with Markdown. If asked about resume, offer the direct download button or summarize key technical highlights.
 `;
