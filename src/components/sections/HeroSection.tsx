@@ -246,7 +246,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenAIAssistant, onO
               transition={{ delay: 1.0, duration: 0.5 }}
               className="absolute -left-5 top-1/2 glass-card p-3 shadow-xl min-w-[90px] text-center"
             >
-              <p className="text-2xl font-black text-violet-400">3+</p>
+              <p className="text-2xl font-black text-violet-400">6+</p>
               <p className="text-[10px] text-slate-400 font-mono">Projects</p>
             </motion.div>
 
