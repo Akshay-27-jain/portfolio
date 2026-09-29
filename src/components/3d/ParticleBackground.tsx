@@ -47,18 +47,18 @@ export const ParticleBackground: React.FC = () => {
       pulseSpeed: number;
     }[] = [];
 
-    const colors = ['#00f0ff', '#8000ff', '#3b82f6', '#06b6d4'];
+    const colors = ['#6366f1', '#8b5cf6', '#a78bfa', '#f59e0b', '#818cf8'];
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.6,
-        vy: (Math.random() - 0.5) * 0.6,
-        radius: Math.random() * 2 + 1,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        radius: Math.random() * 1.5 + 0.5,
         color: colors[Math.floor(Math.random() * colors.length)],
-        alpha: Math.random() * 0.6 + 0.2,
-        pulseSpeed: Math.random() * 0.02 + 0.005,
+        alpha: Math.random() * 0.4 + 0.1,
+        pulseSpeed: Math.random() * 0.015 + 0.003,
       });
     }
 
@@ -68,8 +68,8 @@ export const ParticleBackground: React.FC = () => {
       time += 0.01;
       ctx.clearRect(0, 0, width, height);
 
-      // Draw cyber matrix grid lines
-      ctx.strokeStyle = 'rgba(0, 240, 255, 0.02)';
+      // Subtle dot grid
+      ctx.strokeStyle = 'rgba(99, 102, 241, 0.025)';
       ctx.lineWidth = 1;
       const gridSize = 80;
       for (let x = 0; x < width; x += gridSize) {
@@ -131,7 +131,7 @@ export const ParticleBackground: React.FC = () => {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = '#00f0ff';
+            ctx.strokeStyle = '#6366f1';
             ctx.lineWidth = 0.6;
             ctx.globalAlpha = (1 - pdist / 120) * 0.25;
             ctx.stroke();
@@ -155,8 +155,8 @@ export const ParticleBackground: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 bg-[#050505]"
-      style={{ opacity: 0.85 }}
+      className="fixed inset-0 pointer-events-none z-0 bg-[#0d0f14]"
+      style={{ opacity: 0.9 }}
     />
   );
 };

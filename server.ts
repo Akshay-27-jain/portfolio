@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import path from "path";
+import nodemailer from "nodemailer";
 import { GoogleGenAI } from "@google/genai";
 import { createServer as createViteServer } from "vite";
 
@@ -9,21 +10,17 @@ const PORT = 3000;
 
 app.use(express.json());
 
-// In-memory stats for visitor counter & applause
-let visitorCount = 1248;
-let applauseCount = 382;
-
+// ── AI Context ──────────────────────────────────────────────────────────────
 const AKSHAY_CONTEXT = `
-You are the AI Assistant embedded in Akshay Jain's interactive 3D portfolio website.
-Answer as an intelligent, charismatic, friendly, and technically sharp representative for Akshay Jain.
+You are the AI Assistant embedded in Akshay Jain's portfolio website.
+Answer as an intelligent, friendly, and technically sharp representative for Akshay Jain.
 
 Biography:
 - Name: Akshay Jain
-- Title: AI Engineer | Full Stack Developer | Java Developer
+- Title: Java Full Stack Developer | Software Engineer
 - Location: Solapur, Maharashtra, India
 - Phone: +91 8618280477
 - Email: jainakshay0804@gmail.com
-- Portfolio: https://portfolio-ten-murex-ot303crdie.vercel.app
 - GitHub: https://github.com/Akshay-27-jain
 - LinkedIn: https://www.linkedin.com/in/akshay-jain-636499327/
 - College: Walchand Institute of Technology, Solapur
@@ -32,119 +29,194 @@ Biography:
 
 Technical Skills:
 - Languages: Java, Python, JavaScript, SQL
-- Web Development: React, Next.js, FastAPI, Spring Boot, Node.js, REST APIs
-- Databases: PostgreSQL, MySQL, MongoDB
-- AI & Machine Learning: LLM APIs, Scikit-Learn, OpenCV
-- Tools: Git, GitHub, Docker, Postman
-- Soft Skills: Problem Solving, Communication, Teamwork, Adaptability
+- Web Development: React, Next.js, Spring Boot, Node.js, REST APIs
+- Databases: PostgreSQL, MySQL, MongoDB, Prisma ORM
+- AI & Tools: Gemini API, LLM integration, Git, GitHub, Docker, Postman
 
 Featured Projects:
-1. Subscription Tracker — Subscription & Renewal Management Platform:
-   - Tech Stack: Next.js, React, PostgreSQL, Prisma, Clerk, Resend, Recharts
-   - Full-stack platform tracking recurring services, renewal dates, and expenses with automated Resend email reminders & Recharts spending analytics.
-2. Hospital Management System:
-   - Tech Stack: Java, Spring Boot, React, PostgreSQL, REST APIs
-   - Enterprise hospital operations platform managing patients, doctors, appointments, medical records, and role-based workflows with Spring Boot APIs.
-3. ChronosPulse — Synthetic Health & SSL Certificate Observability SaaS:
-   - Tech Stack: Java 21, Spring Boot 3.4, Spring Security (JWT), Spring Data JPA, Java Mail, H2 Database
-   - Real-time observability platform tracking website availability, response latency, and SSL expiration dates with Slack/Discord webhooks & SSRF protection.
+1. Subscription Tracker — Next.js, React, PostgreSQL, Prisma, Clerk, Resend, Recharts
+2. Hospital Management System — Java, Spring Boot, React, PostgreSQL, REST APIs
+3. Web Application Health & SSL Monitoring — Java 21, Spring Boot 3.4, Spring Security, JWT
 
 Experience:
-- Infosys Springboard | Virtual Intern — Java Full Stack Development (August 2026 – Present Ongoing)
-  - Completing assignments focused on Java full-stack technologies, backend architecture, and enterprise web application development.
+- Infosys Springboard | Virtual Intern — Java Full Stack Development (August 2026 – Present)
 
-Education & Certifications:
-- B.Tech in Computer Engineering at Walchand Institute of Technology (CGPA: 9.07 / 10.0)
-- Nasscom AI Code Sarathi | Nasscom AI (Mar – Apr 2026)
+Certifications:
+- HackerRank Java (Basic) Certification (Aug 2026)
 - Citi Technology Software Development Job Simulation | Forage (Aug 2026)
+- Nasscom AI Code Sarathi Workshop (Mar–Apr 2026)
 
-Keep your answers concise, engaging, helpful, and formatted neatly with Markdown. If asked about resume, offer the direct download button or summarize key technical highlights.
+Keep answers concise, engaging, and formatted with Markdown.
 `;
 
-// AI Chat Endpoint using Gemini
+// ── Gemini AI Chat ───────────────────────────────────────────────────────────
 app.post("/api/chat", async (req, res) => {
   try {
-    const { message, history } = req.body;
-    if (!message) {
-      return res.status(400).json({ error: "Message is required" });
-    }
+    const { message } = req.body;
+    if (!message) return res.status(400).json({ error: "Message is required" });
 
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       return res.status(500).json({
-        error: "GEMINI_API_KEY is not configured.",
-        reply: "Hello! I am Akshay's AI Assistant. Gemini API key is required to activate live conversational answers, but feel free to browse his projects and experience above!"
+        error: "GEMINI_API_KEY not configured.",
+        reply: "Hi! I'm Akshay's AI Assistant. The API key isn't set up yet — feel free to explore his projects or email him at jainakshay0804@gmail.com!"
       });
     }
 
-    const ai = new GoogleGenAI({
-      apiKey,
-      httpOptions: {
-        headers: {
-          "User-Agent": "aistudio-build",
-        },
-      },
-    });
-
-    const promptText = `
-User question: "${message}"
-
-Respond concisely and accurately based on Akshay Jain's background and achievements. Use Markdown formatting.
-`;
-
+    const ai = new GoogleGenAI({ apiKey });
     const response = await ai.models.generateContent({
-      model: "gemini-3.6-flash",
-      contents: promptText,
+      model: "gemini-2.0-flash",
+      contents: `User question: "${message}"\n\nRespond concisely and accurately. Use Markdown formatting.`,
       config: {
         systemInstruction: AKSHAY_CONTEXT,
         temperature: 0.7,
       },
     });
 
-    const replyText = response.text || "I'm here to answer any questions about Akshay's projects, skills, and background!";
-    return res.json({ reply: replyText });
+    return res.json({ reply: response.text || "Ask me anything about Akshay's skills and projects!" });
   } catch (err: any) {
     console.error("Gemini API Error:", err);
     return res.status(500).json({
-      error: err.message || "Failed to generate AI response",
-      reply: "I am currently undergoing network calibration! Feel free to explore Akshay's project portfolio directly on the page, or email him at jainakshay0804@gmail.com."
+      error: err.message,
+      reply: "I'm having a moment — please email Akshay directly at jainakshay0804@gmail.com."
     });
   }
 });
 
-// Analytics Counter Endpoint
-app.get("/api/analytics", (req, res) => {
-  visitorCount += 1;
-  res.json({ visitors: visitorCount, applause: applauseCount });
+// ── Contact Form — Real SMTP Email ───────────────────────────────────────────
+app.post("/api/contact", async (req, res) => {
+  const { name, email, subject, message } = req.body;
+
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: "Name, email and message are required." });
+  }
+
+  const gmailUser = process.env.GMAIL_USER;
+  const gmailPass = process.env.GMAIL_APP_PASSWORD;
+
+  if (!gmailUser || !gmailPass) {
+    console.error("Gmail SMTP credentials not configured.");
+    return res.status(500).json({ error: "Email service not configured." });
+  }
+
+  try {
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: gmailUser,
+        pass: gmailPass,
+      },
+    });
+
+    await transporter.sendMail({
+      from: `"Portfolio Contact" <${gmailUser}>`,
+      replyTo: `"${name}" <${email}>`,
+      to: gmailUser,
+      subject: `[Portfolio] ${subject || "New Message"} — from ${name}`,
+      html: `
+        <div style="font-family: 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; background: #0d0f14; color: #f8fafc; padding: 32px; border-radius: 16px; border: 1px solid #374151;">
+          <h2 style="color: #818cf8; margin-top: 0;">📬 New Portfolio Contact</h2>
+          <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
+            <tr>
+              <td style="padding: 8px 0; color: #94a3b8; font-size: 13px; width: 100px;">From:</td>
+              <td style="padding: 8px 0; color: #f8fafc; font-size: 13px; font-weight: 600;">${name}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0; color: #94a3b8; font-size: 13px;">Email:</td>
+              <td style="padding: 8px 0;"><a href="mailto:${email}" style="color: #818cf8; text-decoration: none;">${email}</a></td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0; color: #94a3b8; font-size: 13px;">Subject:</td>
+              <td style="padding: 8px 0; color: #f8fafc; font-size: 13px;">${subject || '—'}</td>
+            </tr>
+          </table>
+          <hr style="border: none; border-top: 1px solid #374151; margin: 16px 0;" />
+          <h3 style="color: #a5b4fc; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Message:</h3>
+          <p style="color: #cbd5e1; line-height: 1.7; font-size: 14px; white-space: pre-wrap;">${message}</p>
+          <hr style="border: none; border-top: 1px solid #374151; margin: 24px 0 16px;" />
+          <p style="color: #6b7280; font-size: 12px;">Sent from your portfolio website · Reply directly to <a href="mailto:${email}" style="color: #818cf8;">${email}</a></p>
+        </div>
+      `,
+    });
+
+    console.log(`✅ Contact email sent from ${name} <${email}>`);
+    return res.json({ success: true });
+  } catch (err: any) {
+    console.error("Nodemailer Error:", err);
+    return res.status(500).json({ error: "Failed to send email. Please try again." });
+  }
 });
 
-app.post("/api/applause", (req, res) => {
-  applauseCount += 1;
-  res.json({ applause: applauseCount });
-});
-
-// GitHub API Proxy / Mock Summary Endpoint
+// ── GitHub Live API ───────────────────────────────────────────────────────────
 app.get("/api/github", async (req, res) => {
   try {
-    res.json({
-      username: "akshayjain",
-      public_repos: 24,
-      stars: 186,
-      contributions_this_year: 742,
-      top_languages: ["Java", "Python", "TypeScript", "JavaScript", "SQL"],
-      streak: "48 days",
-      recent_commits: [
-        { repo: "AI-Warehouse-Optimization", msg: "Optimize XGBoost demand forecast pipeline", time: "2 hours ago" },
-        { repo: "SaaS-Customer-Support", msg: "Implement multi-tenant JWT middleware", time: " Yesterday" },
-        { repo: "Edge-CV-Monitor", msg: "Deploy lightweight YOLOv8 on TFLite runtime", time: "3 days ago" },
-        { repo: "Hospital-Management-System", msg: "Add JDBC batch billing processor", time: "5 days ago" }
-      ]
+    const [userRes, reposRes] = await Promise.all([
+      fetch("https://api.github.com/users/Akshay-27-jain", {
+        headers: { "Accept": "application/vnd.github.v3+json", "User-Agent": "portfolio-app" }
+      }),
+      fetch("https://api.github.com/users/Akshay-27-jain/repos?per_page=100&sort=updated", {
+        headers: { "Accept": "application/vnd.github.v3+json", "User-Agent": "portfolio-app" }
+      })
+    ]);
+
+    const userData = await userRes.json();
+    const reposData = await reposRes.json();
+
+    const repos = Array.isArray(reposData) ? reposData : [];
+    const totalStars = repos.reduce((sum: number, r: any) => sum + (r.stargazers_count || 0), 0);
+
+    // Count languages
+    const langMap: Record<string, number> = {};
+    repos.forEach((r: any) => {
+      if (r.language) langMap[r.language] = (langMap[r.language] || 0) + 1;
+    });
+    const topLanguages = Object.entries(langMap)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([lang]) => lang);
+
+    // Recent repos
+    const recentRepos = repos.slice(0, 6).map((r: any) => ({
+      name: r.name,
+      description: r.description,
+      language: r.language,
+      stars: r.stargazers_count,
+      forks: r.forks_count,
+      url: r.html_url,
+      updated_at: r.updated_at,
+    }));
+
+    return res.json({
+      username: userData.login || "Akshay-27-jain",
+      public_repos: userData.public_repos || repos.length,
+      followers: userData.followers || 0,
+      total_stars: totalStars,
+      top_languages: topLanguages.length > 0 ? topLanguages : ["Java", "JavaScript", "Python"],
+      recent_repos: recentRepos,
     });
   } catch (err) {
-    res.status(500).json({ error: "Failed to fetch github stats" });
+    console.error("GitHub API error:", err);
+    // Fallback to static data
+    return res.json({
+      username: "Akshay-27-jain",
+      public_repos: 10,
+      followers: 0,
+      total_stars: 0,
+      top_languages: ["Java", "JavaScript", "TypeScript", "Python", "SQL"],
+      recent_repos: [],
+    });
   }
 });
 
+// ── Analytics ────────────────────────────────────────────────────────────────
+let visitorCount = 1248;
+
+app.get("/api/analytics", (req, res) => {
+  visitorCount += 1;
+  res.json({ visitors: visitorCount });
+});
+
+// ── Server startup ────────────────────────────────────────────────────────────
 async function startServer() {
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
@@ -161,7 +233,9 @@ async function startServer() {
   }
 
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on http://0.0.0.0:${PORT}`);
+    console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
+    console.log(`   Gmail SMTP: ${process.env.GMAIL_USER ? "✅ configured" : "❌ not set"}`);
+    console.log(`   Gemini AI:  ${process.env.GEMINI_API_KEY ? "✅ configured" : "❌ not set"}`);
   });
 }
 

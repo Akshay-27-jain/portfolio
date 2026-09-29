@@ -6,7 +6,6 @@ import { SoundProvider } from './components/ui/SoundManager';
 import { Navbar } from './components/ui/Navbar';
 import { CommandPalette } from './components/ui/CommandPalette';
 import { AIAssistantModal } from './components/ui/AIAssistantModal';
-import { ProjectArchitectureModal } from './components/ui/ProjectArchitectureModal';
 import { ResumeModal } from './components/ui/ResumeModal';
 
 import { HeroSection } from './components/sections/HeroSection';
@@ -19,80 +18,69 @@ import { AchievementsSection } from './components/sections/AchievementsSection';
 import { CertificationsSection } from './components/sections/CertificationsSection';
 import { CodingProfilesSection } from './components/sections/CodingProfilesSection';
 import { BlogSection } from './components/sections/BlogSection';
-import { GlobeSection } from './components/sections/GlobeSection';
 import { ContactSection } from './components/sections/ContactSection';
 import { Footer } from './components/sections/Footer';
-
-import { Project } from './types';
 
 export function AppContent() {
   const [isLoading, setIsLoading] = useState(true);
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const [aiAssistantOpen, setAiAssistantOpen] = useState(false);
   const [resumeModalOpen, setResumeModalOpen] = useState(false);
-  const [selectedArchitectureProject, setSelectedArchitectureProject] = useState<Project | null>(null);
 
   if (isLoading) {
     return <LoadingScreen onComplete={() => setIsLoading(false)} />;
   }
 
   return (
-    <div className="relative min-h-screen bg-[#030305] text-white selection:bg-cyan-500 selection:text-black overflow-x-hidden font-sans">
-      {/* 3D Interactive Custom Cursor */}
+    <div className="relative min-h-screen bg-[#0d0f14] text-white selection:bg-indigo-500 selection:text-white overflow-x-hidden font-sans">
+
+      {/* Custom Cursor */}
       <CustomCursor />
 
-      {/* 3D Dynamic Particle Canvas */}
+      {/* Subtle particle background */}
       <ParticleBackground />
 
-      {/* Futuristic Navbar */}
+      {/* Navbar */}
       <Navbar
         onOpenCommandPalette={() => setCommandPaletteOpen(true)}
         onOpenAIAssistant={() => setAiAssistantOpen(true)}
         onOpenResume={() => setResumeModalOpen(true)}
       />
 
-      {/* Hero Section */}
+      {/* Hero */}
       <HeroSection
         onOpenAIAssistant={() => setAiAssistantOpen(true)}
         onOpenResume={() => setResumeModalOpen(true)}
       />
 
-      {/* About Section */}
+      {/* About */}
       <AboutSection />
 
-      {/* Education Section */}
-      <EducationSection
-        onOpenResume={() => setResumeModalOpen(true)}
-      />
+      {/* Education */}
+      <EducationSection onOpenResume={() => setResumeModalOpen(true)} />
 
-      {/* Skills Section */}
+      {/* Skills */}
       <SkillsSection />
 
-      {/* Featured Projects Showcase */}
-      <ProjectsSection
-        onSelectArchitecture={(proj) => setSelectedArchitectureProject(proj)}
-      />
+      {/* Projects */}
+      <ProjectsSection onSelectArchitecture={() => {}} />
 
-
-      {/* Experience Section */}
+      {/* Experience */}
       <ExperienceSection />
 
-      {/* Achievements Section */}
+      {/* Achievements */}
       <AchievementsSection />
 
-      {/* Certifications Section */}
+      {/* Certifications */}
       <CertificationsSection />
 
-      {/* Coding Profiles & GitHub Matrix */}
+      {/* Coding Profiles & GitHub */}
       <CodingProfilesSection />
 
-      {/* Global 3D Network Globe */}
-      <GlobeSection />
-
-      {/* Technical Articles Blog */}
+      {/* Blog */}
       <BlogSection />
 
-      {/* Contact Section */}
+      {/* Contact */}
       <ContactSection />
 
       {/* Footer */}
@@ -109,11 +97,6 @@ export function AppContent() {
       <AIAssistantModal
         isOpen={aiAssistantOpen}
         onClose={() => setAiAssistantOpen(false)}
-      />
-
-      <ProjectArchitectureModal
-        project={selectedArchitectureProject}
-        onClose={() => setSelectedArchitectureProject(null)}
       />
 
       <ResumeModal
