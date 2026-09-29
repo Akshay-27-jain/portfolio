@@ -6,9 +6,11 @@ dist/
 build/
 coverage/
 
-# Security & Environment files (EXCLUDED)
+# Security & Environment files (NEVER commit these)
 .env
 .env.*
+.env.local
+.env.*.local
 *.pem
 *.key
 *.p12
@@ -40,3 +42,9 @@ __pycache__/
 *.log
 .DS_Store
 Thumbs.db
+
+# OS files
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
