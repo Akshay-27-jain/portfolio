@@ -64,16 +64,34 @@ app.post("/api/chat", async (req, res) => {
     }
 
     const ai = new GoogleGenAI({ apiKey });
-    const response = await ai.models.generateContent({
-      model: "gemini-3.8-flash",
-      contents: `User question: "${message}"\n\nRespond concisely and accurately. Use Markdown formatting.`,
-      config: {
-        systemInstruction: AKSHAY_CONTEXT,
-        temperature: 0.7,
-      },
-    });
 
-    return res.json({ reply: response.text || "Ask me anything about Akshay's skills and projects!" });
+    // Try models in order — fallback if one is overloaded (503)
+    const models = ["gemini-2.5-flash", "gemini-1.5-flash", "gemini-1.5-pro"];
+    let lastError: any = null;
+
+    for (const model of models) {
+      try {
+        const response = await ai.models.generateContent({
+          model,
+          contents: `User question: "${message}"\n\nRespond concisely and accurately. Use Markdown formatting.`,
+          config: {
+            systemInstruction: AKSHAY_CONTEXT,
+            temperature: 0.7,
+          },
+        });
+        return res.json({ reply: response.text || "Ask me anything about Akshay's skills and projects!" });
+      } catch (err: any) {
+        lastError = err;
+        // Only retry on 503 (overload) or 404 (model deprecated)
+        if (err.status === 503 || err.status === 404) {
+          console.warn(`Model ${model} failed (${err.status}), trying next...`);
+          continue;
+        }
+        throw err; // Other errors — don't retry
+      }
+    }
+
+    throw lastError;
   } catch (err: any) {
     console.error("Gemini API Error:", err);
     return res.status(500).json({
