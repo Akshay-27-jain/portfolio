@@ -65,7 +65,7 @@ app.post("/api/chat", async (req, res) => {
 
     const ai = new GoogleGenAI({ apiKey });
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.8-flash",
       contents: `User question: "${message}"\n\nRespond concisely and accurately. Use Markdown formatting.`,
       config: {
         systemInstruction: AKSHAY_CONTEXT,
