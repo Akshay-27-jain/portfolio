@@ -3,7 +3,7 @@ export interface Project {
   title: string;
   subtitle: string;
   description: string;
-  category: 'AI/ML' | 'Full Stack' | 'Edge CV' | 'Java Backend';
+  category: 'AI/ML' | 'Full Stack' | 'Edge CV' | 'Java Backend' | 'AI/LLM';
   image: string;
   demoUrl: string;
   githubUrl: string;

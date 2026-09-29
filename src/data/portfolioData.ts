@@ -46,155 +46,112 @@ export const PROJECTS: Project[] = [
     description: "Engineered a full-stack subscription management platform using Next.js, React, and PostgreSQL to track recurring services, billing cycles, and renewal dates with automated Resend email reminders and analytics dashboards.",
     category: "Full Stack",
     image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80",
-    demoUrl: "https://portfolio-ten-murex-ot303crdie.vercel.app",
+    demoUrl: "https://subscription-tracker-six-lake.vercel.app",
     githubUrl: "https://github.com/Akshay-27-jain/Subscription-Tracker",
     technologies: ["Next.js", "React", "PostgreSQL", "Prisma", "Clerk", "Resend", "Recharts"],
-    problem: "Users often forget recurring subscription billing cycles, leading to unexpected credit card charges and unused auto-renewals.",
-    solution: "Subscription Tracker provides automated email alerts, billing countdowns, and graphical spending breakdowns so users retain total control of recurring expenses.",
-    keyFeatures: [
-      "Track recurring services, billing cycles, & renewal dates",
-      "Clerk-based Authentication & Access Control",
-      "Automated Resend Email Reminders for Upcoming Renewals",
-      "Interactive Recharts-based Analytics Dashboards",
-      "Optimized Database Access using Prisma ORM",
-      "Responsive UI with Reusable React Components"
-    ],
-    results: [
-      "Automated 100% of upcoming renewal email notifications",
-      "Visualized monthly spending, active subscriptions, & expense trends",
-      "Delivered sub-100ms database response times with Prisma ORM"
-    ],
-    futureImprovements: [
-      "Integrate Open Banking APIs for auto-detecting bank subscriptions",
-      "Support multi-currency conversion for global software tools",
-      "Add shared family subscription cost splitting"
-    ],
-    architectureDiagram: {
-      frontend: "Next.js 15, React 19, Tailwind CSS, Recharts",
-      backend: "Next.js Server Actions & API Routes",
-      database: "PostgreSQL Database with Prisma ORM",
-      aiEngine: "Resend Email Notification Trigger Engine",
-      flowSteps: [
-        "User logs in securely via Clerk Auth",
-        "Dashboard queries PostgreSQL via Prisma ORM for subscription renewal dates",
-        "Resend cron serverless handler dispatches email alert prior to renewal",
-        "Interactive Recharts visualizes monthly recurring spend breakdown"
-      ]
-    },
-    databaseDesign: [
-      "users (id, clerk_user_id, email, created_at)",
-      "subscriptions (id, user_id, name, price, billing_cycle, renewal_date, category)",
-      "reminders (id, subscription_id, trigger_date, is_sent)"
-    ],
-    challenges: [
-      "Handling recurring cron schedule execution across serverless deployments",
-      "Ensuring strict data isolation per authenticated Clerk user"
-    ]
+    problem: "Users forget recurring subscription billing cycles, leading to unexpected charges.",
+    solution: "Automated email alerts, billing countdowns, and spending breakdowns for full control.",
+    keyFeatures: ["Track recurring services, billing cycles & renewal dates", "Clerk-based Authentication & Access Control", "Automated Resend Email Reminders", "Interactive Recharts Analytics Dashboards", "Prisma ORM for sub-100ms DB response times", "Responsive React UI with reusable components"],
+    results: ["Automated 100% of renewal email notifications", "Visualized monthly spending & expense trends", "Sub-100ms database response times with Prisma ORM"],
+    futureImprovements: [],
+    architectureDiagram: { frontend: "Next.js 15, React 19, Recharts", backend: "Next.js Server Actions", database: "PostgreSQL + Prisma ORM", aiEngine: "Resend Email Engine", flowSteps: [] },
+    databaseDesign: [],
+    challenges: []
   },
   {
     id: "hospital-management-system",
     title: "Hospital Management System",
     subtitle: "Enterprise Java & Spring Boot Operations Platform",
-    description: "Architected a full-stack hospital management system using Java, Spring Boot, React, and PostgreSQL to manage patients, doctors, appointments, medical records, and hospital administrative workflows.",
+    description: "Architected a full-stack hospital management system using Java, Spring Boot, React, and PostgreSQL to manage patients, doctors, appointments, medical records, and hospital workflows with role-based access control.",
     category: "Java Backend",
     image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80",
     demoUrl: "https://github.com/Akshay-27-jain/Hospital-Management-System",
     githubUrl: "https://github.com/Akshay-27-jain/Hospital-Management-System",
-    technologies: ["Java", "Spring Boot", "React", "PostgreSQL", "REST APIs"],
-    problem: "Hospitals face paper record delays, appointment overlap errors, and cumbersome patient check-in workflows.",
-    solution: "Centralized enterprise web platform delivering role-based dashboards, conflict-free appointment booking, and persistent electronic medical history.",
-    keyFeatures: [
-      "Patient Registration & Medical Record Management",
-      "Doctor Shift Scheduling & Specialty Directory",
-      "Engineered RESTful APIs and Role-Based Workflows (Admin, Doctor, Staff)",
-      "Relational Database Schemas for Patient Records & Billing Data",
-      "Responsive React Dashboards for Appointment Scheduling & Operations"
-    ],
-    results: [
-      "Eliminated appointment scheduling collisions completely",
-      "Streamlined patient record lookups across clinic staff",
-      "Delivered robust role-based access security"
-    ],
-    futureImprovements: [
-      "Add Telehealth video consultation portal",
-      "Integrate automated SMS appointment notifications",
-      "Incorporate HL7 / FHIR medical standards"
-    ],
-    architectureDiagram: {
-      frontend: "React SPA with Tailwind CSS",
-      backend: "Spring Boot REST Microservice Controller Layer",
-      database: "PostgreSQL Relational DB",
-      aiEngine: "Rules-Based Shift Validator & Schedule Conflict Checker",
-      flowSteps: [
-        "User accesses React dashboard and requests appointment",
-        "Spring Boot REST Controller validates doctor schedule availability",
-        "Data persisted transactionally in PostgreSQL",
-        "Updated schedule pushed to admin and doctor portals"
-      ]
-    },
-    databaseDesign: [
-      "patients (id, first_name, last_name, contact, blood_group, created_at)",
-      "doctors (id, name, specialization, fee, shift_schedule)",
-      "appointments (id, patient_id, doctor_id, date, status, notes)",
-      "medical_records (id, patient_id, diagnosis, prescription, date)"
-    ],
-    challenges: [
-      "Designing clean relational database schemas for complex medical relationships",
-      "Securing role-based authorization across patient data"
-    ]
+    technologies: ["Java", "Spring Boot", "React", "PostgreSQL", "REST APIs", "Spring Security"],
+    problem: "Hospitals face paper record delays, appointment overlaps, and cumbersome check-in workflows.",
+    solution: "Centralized platform with role-based dashboards, conflict-free scheduling, and electronic medical records.",
+    keyFeatures: ["Patient Registration & Medical Record Management", "Doctor Shift Scheduling & Specialty Directory", "RESTful APIs with Role-Based Workflows (Admin, Doctor, Staff)", "PostgreSQL schemas for Patient Records & Billing", "Responsive React Dashboards for Appointment Scheduling"],
+    results: [],
+    futureImprovements: [],
+    architectureDiagram: { frontend: "React SPA + Tailwind CSS", backend: "Spring Boot REST API", database: "PostgreSQL", aiEngine: "", flowSteps: [] },
+    databaseDesign: [],
+    challenges: []
   },
   {
     id: "health-latency-ssl-monitoring",
-    title: "Web Application Health & SSL Monitoring System",
-    subtitle: "Synthetic Health, Latency & SSL Certificate Observability SaaS",
-    description: "Engineered a full-stack observability platform using Java 21 and Spring Boot 3.4, performing real-time HTTP/HTTPS health checks and raw TCP probes with a multi-channel alert dispatcher (Slack, Discord, Webhooks, Java Mail).",
-    category: "Full Stack",
+    title: "Web App Health & SSL Monitor",
+    subtitle: "Synthetic Health, Latency & SSL Observability SaaS",
+    description: "Full-stack observability platform using Java 21 and Spring Boot 3.4 performing real-time HTTP/HTTPS health checks and TCP probes with multi-channel alert dispatcher (Slack, Discord, Webhooks, Java Mail).",
+    category: "Java Backend",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
     demoUrl: "https://github.com/Akshay-27-jain/Web-Application-Health-Response-Latency-SSL-Certificate-Expiry-Monitoring-System",
     githubUrl: "https://github.com/Akshay-27-jain/Web-Application-Health-Response-Latency-SSL-Certificate-Expiry-Monitoring-System",
-    technologies: ["Java 21", "Spring Boot 3.4", "Spring Security", "JWT", "Spring Data JPA", "H2 Database", "Java Mail", "Webhooks"],
-    problem: "System administrators lack unified visibility into domain uptime, SSL expiration risks, TCP port status, and web service degradation.",
-    solution: "ChronosPulse probes HTTP status codes, SSL cert validity, TCP ports (Redis, Postgres, DNS), and latency continuously, dispatching instant webhooks/emails when outages occur.",
-    keyFeatures: [
-      "Real-Time HTTP/HTTPS Health Checks & TCP Probes (Redis, Postgres, DNS)",
-      "Time-Series Metrics Persistence via Spring Data JPA & Latency Analytics (Min/Avg/Max)",
-      "Multi-Channel Alert Dispatcher (Slack, Discord, Custom Webhooks, Java Mail HTML Alerts)",
-      "Spring Security with JWT Authentication & BCrypt Hashing",
-      "RBAC Security & SSRF-Defensive URL Validation",
-      "Responsive Dark-Themed Dashboard with Live Filtering & Public Status Pages"
-    ],
-    results: [
-      "Delivered sub-100ms domain & TCP port scanning speed",
-      "Prevented SSL downtime risks with proactive warning alerts",
-      "Zero SSRF security vulnerabilities verified through defensive URL validation"
-    ],
-    futureImprovements: [
-      "Deploy distributed multi-region probe gateways",
-      "Add anomaly detection for sudden latency spikes",
-      "Integrate PagerDuty on-call escalation triggers"
-    ],
-    architectureDiagram: {
-      frontend: "React Observability Dashboard with SVG Trend Charts",
-      backend: "Java 21 & Spring Boot 3.4 Async Task Scheduler",
-      database: "Spring Data JPA & Embedded H2 / PostgreSQL Store",
-      aiEngine: "Synthetic Probe Engine & Latency Anomaly Evaluator",
-      flowSteps: [
-        "Spring Boot 3.4 scheduled worker executes HTTP/SSL & TCP probes",
-        "Latency & SSL expiration metadata recorded via Spring Data JPA",
-        "If status != 200 or SSL expiring, incident payload dispatched to Slack/Discord/Email webhooks",
-        "Public status page updated dynamically with SVG trend charts"
-      ]
-    },
-    databaseDesign: [
-      "monitors (id, user_id, url, check_interval, status, last_checked)",
-      "probe_logs (id, monitor_id, status_code, latency_ms, timestamp)",
-      "ssl_certs (id, monitor_id, issuer, expiry_date, days_remaining)",
-      "incidents (id, monitor_id, alert_type, payload, sent_at)"
-    ],
-    challenges: [
-      "Preventing Server-Side Request Forgery (SSRF) vulnerabilities on user-supplied probe URLs",
-      "Managing high-frequency asynchronous HTTP/TCP ping threads without memory overhead"
-    ]
+    technologies: ["Java 21", "Spring Boot 3.4", "Spring Security", "JWT", "Spring Data JPA", "H2 Database", "Java Mail"],
+    problem: "Admins lack unified visibility into domain uptime, SSL expiration, TCP ports, and latency.",
+    solution: "Probes HTTP, SSL certs, TCP ports continuously and dispatches Slack/Discord/email alerts on failures.",
+    keyFeatures: ["Real-Time HTTP/HTTPS Health Checks & TCP Probes", "Multi-Channel Alerts (Slack, Discord, Java Mail)", "JWT Authentication & BCrypt Hashing", "SSRF-Defensive URL Validation", "Latency Analytics (Min/Avg/Max)"],
+    results: [],
+    futureImprovements: [],
+    architectureDiagram: { frontend: "", backend: "Java 21 + Spring Boot 3.4 Async Scheduler", database: "Spring Data JPA + H2/PostgreSQL", aiEngine: "", flowSteps: [] },
+    databaseDesign: [],
+    challenges: []
+  },
+  {
+    id: "blood-bank-system",
+    title: "Blood Bank System",
+    subtitle: "Blood Inventory & Donor Management Web App",
+    description: "Full-stack Blood Bank Management System using JavaScript to manage blood inventory, donor registrations, blood type matching, and donation records with a user-friendly interface for hospital staff.",
+    category: "Full Stack",
+    image: "https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&w=1200&q=80",
+    demoUrl: "https://github.com/Akshay-27-jain/Blood-Bsnk-System",
+    githubUrl: "https://github.com/Akshay-27-jain/Blood-Bsnk-System",
+    technologies: ["JavaScript", "Node.js", "Express.js", "MongoDB", "HTML", "CSS"],
+    problem: "Blood banks struggle with manual inventory, donor record management, and real-time stock visibility.",
+    solution: "Web app centralizing blood inventory, automating donor records, and providing real-time stock by blood group.",
+    keyFeatures: ["Blood inventory by blood type (A+, B+, O+, AB+, etc.)", "Donor registration & donation history tracking", "Blood availability search & request management", "Admin dashboard for inventory control", "Responsive UI for hospital staff"],
+    results: [],
+    futureImprovements: [],
+    architectureDiagram: { frontend: "HTML, CSS, JavaScript", backend: "Node.js + Express.js", database: "MongoDB", aiEngine: "", flowSteps: [] },
+    databaseDesign: [],
+    challenges: []
+  },
+  {
+    id: "chatbot-ai-delivery-app",
+    title: "AI Chatbot Delivery App",
+    subtitle: "LLM-Powered Conversational Delivery Assistant",
+    description: "AI-powered delivery application with an integrated LLM chatbot for natural language order tracking, customer support automation, and intelligent delivery status queries.",
+    category: "AI/LLM",
+    image: "https://images.unsplash.com/photo-1526367790999-0150786686a2?auto=format&fit=crop&w=1200&q=80",
+    demoUrl: "https://github.com/Akshay-27-jain/Chatbot_Ai-Delivery-app",
+    githubUrl: "https://github.com/Akshay-27-jain/Chatbot_Ai-Delivery-app",
+    technologies: ["JavaScript", "Node.js", "LLM API", "Express.js", "REST APIs"],
+    problem: "Delivery apps use rigid menu-driven support, failing to understand natural language order queries.",
+    solution: "LLM-powered chatbot that understands natural language, handles order queries, and gives real-time delivery updates.",
+    keyFeatures: ["LLM-powered conversational chatbot", "Natural language order status & tracking", "Customer support automation via AI", "REST API integration for delivery data", "Prompt engineering for domain-specific responses"],
+    results: [],
+    futureImprovements: [],
+    architectureDiagram: { frontend: "JavaScript UI", backend: "Node.js + Express.js", database: "", aiEngine: "LLM API", flowSteps: [] },
+    databaseDesign: [],
+    challenges: []
+  },
+  {
+    id: "data-structures-java",
+    title: "Data Structures & Algorithms",
+    subtitle: "Java DSA Implementation Library",
+    description: "Comprehensive DSA repository in Java covering arrays, linked lists, trees, graphs, sorting, searching, and dynamic programming — demonstrating strong CS fundamentals and clean OOP design.",
+    category: "Java Backend",
+    image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=80",
+    demoUrl: "https://github.com/Akshay-27-jain/DataStructure",
+    githubUrl: "https://github.com/Akshay-27-jain/DataStructure",
+    technologies: ["Java", "Data Structures", "Algorithms", "OOP", "Problem Solving"],
+    problem: "Consistent algorithmic practice is required to master DSA patterns and problem solving.",
+    solution: "Structured Java implementations of all major data structures and algorithm patterns with clean OOP design.",
+    keyFeatures: ["Arrays, Linked Lists, Stacks, Queues", "Binary Trees, BST, Heaps, Graphs (BFS/DFS)", "Sorting: Merge, Quick, Heap Sort", "Dynamic Programming & Recursion", "Clean Java OOP with modular class structure"],
+    results: [],
+    futureImprovements: [],
+    architectureDiagram: { frontend: "", backend: "Core Java — OOP, Collections, Generics", database: "", aiEngine: "", flowSteps: [] },
+    databaseDesign: [],
+    challenges: []
   }
 ];
 

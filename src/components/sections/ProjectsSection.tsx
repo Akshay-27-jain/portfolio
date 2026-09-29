@@ -21,7 +21,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectArchit
   const [filter, setFilter] = useState<string>('All');
   const { playClick } = useSound();
 
-  const categories = ['All', 'Full Stack', 'Java Backend'];
+  const categories = ['All', 'Full Stack', 'Java Backend', 'AI/LLM'];
 
   const filteredProjects =
     filter === 'All' ? PROJECTS : PROJECTS.filter((p) => p.category === filter);
