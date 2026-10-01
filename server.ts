@@ -65,8 +65,8 @@ app.post("/api/chat", async (req, res) => {
 
     const ai = new GoogleGenAI({ apiKey });
 
-    // Try models in order — fallback if one is overloaded (503)
-    const models = ["gemini-2.5-flash", "gemini-1.5-flash", "gemini-1.5-pro"];
+    // Try models in order — fallback if one is overloaded (503) or deprecated (404)
+    const models = ["gemini-3.6-flash", "gemini-3.8-flash"];
     let lastError: any = null;
 
     for (const model of models) {
