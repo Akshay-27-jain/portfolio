@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { PERSONAL_INFO } from '../../data/portfolioData';
 import { useSound } from '../ui/SoundManager';
+import profileImg from '../../../assets/akshay-profile.jpg';
 
 interface HeroSectionProps {
   onOpenAIAssistant: () => void;
@@ -208,7 +209,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenAIAssistant, onO
             {/* Photo frame */}
             <div className="relative w-[300px] sm:w-[360px] lg:w-[400px] rounded-3xl overflow-hidden border border-indigo-500/25 shadow-2xl shadow-indigo-900/30 bg-[#111827]">
               <img
-                src="/assets/akshay-profile.jpg"
+                src={profileImg || "/akshay-profile.jpg"}
                 alt="Akshay Jain — Java Full Stack Developer"
                 className="w-full object-cover object-top"
                 style={{ aspectRatio: '4/5' }}
